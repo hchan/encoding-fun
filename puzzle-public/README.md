@@ -1,7 +1,6 @@
 # Encoding Fun
 
 Solve the puzzle [here](encoded.txt) and you'll get a reward
-{% gist efbdfc243a013d93129d28422dfe8e7a %}
 
 ## Hints:
 * The puzzle is a ciphertext encoded in Base-N (where N is a number between 10 and 64)
