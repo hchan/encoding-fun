@@ -82,6 +82,7 @@ fs.readFile("../puzzle-public/encoded.txt", "utf8", function (err, data) {
     var alphabet = getUniqueChars(encodedStr)
     logger.info(`uniqueChars found in encodedStr : ${alphabet} ... length is ${alphabet.length}`)
     // note 12! == 479001600 takes about 1.5h to run
+    // A Base12 packs 3.585bits per char ( Math.log(12) / Math.log(2) )
     permute(alphabet);
     logger.error("No soln found =( " + new Date())
 });
