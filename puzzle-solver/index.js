@@ -28,7 +28,8 @@ function isASCII(str) {
 //usedChars: Global utility array which holds a list of "currently-in-use" characters
 var usedChars = [];
 var perm = "";
-var encodedStr = "";
+var encodedStr = ""; // just a sample of the orig
+var encodedStrOrig = "";
 var permutationCount = 0;
 function permute(input) {
     //convert input into a char array (one element for each character)
@@ -48,15 +49,14 @@ function permute(input) {
             var decoded = baseX.decode(encodedStr);
             decoded = decoded.toString();
             if (permutationCount % 10000000 == 0) {
-                logger.info("permuationCount:" + permutationCount + "," + perm)
+                logger.info(`permutationCount : ${permutationCount} with last permuation as : ${perm}`)
             }
-
-
             if (isASCII(decoded.substring(0, 50))) {
-                logger.info("perm: " + perm)
-                logger.info("Decode: ")
-                logger.info(decoded);
-                logger.info("FOUND SOLN! " + new Date())
+                logger.info("FOUND SOLN!")
+                logger.info(`indexTable : ${perm}`)
+                decoded = baseX.decode(encodedStrOrig);
+                decoded = decoded.toString();
+                logger.info(decoded)
                 process.exit();
             }
         }
@@ -80,14 +80,13 @@ function getUniqueChars(str) {
 fs.readFile("../puzzle-public/encoded.txt", "utf8", function (err, data) {
     encodedStr = data.toString();
     encodedStr = encodedStr.replace("\n", "")
+    encodedStrOrig = encodedStr;
     logger.info("BEGIN!")
-    logger.info("encodedStr:" + encodedStr)
+    logger.info("encodedStr: " + encodedStr)
     var alphabet = getUniqueChars(encodedStr)
-    logger.info(alphabet)
+    logger.info(`uniqueChars found in encodedStr : ${alphabet} ... length is ${alphabet.length}`)
     encodedStr = encodedStr.substring(0, 100) // just take a small sample
     // note 12! == 479001600 takes about 1.5h to run
-
-
     permute(alphabet);
     logger.error("No soln found =( " + new Date())
 });
