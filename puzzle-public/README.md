@@ -4,8 +4,8 @@ Solve the puzzle [here](encoded.txt) and you'll get a reward
 
 ## Hints:
 * The puzzle is a ciphertext encoded in Base-N (where N is a number between 10 and 64)
-* Figure out how many (and which) unique characters are in the ciphertext
-* You'll have to use brute force to find the `alphabet` (aka `index table`)
+* Figure out how many (and which) unique charcters (symbols) are in the ciphertext
+* You'll have to use brute force to find the order of the symbols in the `alphabet` (aka `index table`)
 * The plainText (decoded ciphertext) is in ASCII
 
 ## Fun facts:
